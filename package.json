@@ -1,0 +1,29 @@
+
+{
+  "name": "fre-cardapio",
+  "version": "1.0.0",
+  "description": "Plataforma SaaS de cardápios digitais e pedidos para restaurantes",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eduardoibarrasilva2026-bot/Sass-cardapio-.git"
+  },
+  "keywords": [
+    "cardapio",
+    "restaurantes",
+    "pedidos",
+    "saas"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/eduardoibarrasilva2026-bot/Sass-cardapio-/issues"
+  },
+  "homepage": "https://github.com/eduardoibarrasilva2026-bot/Sass-cardapio-#readme"
+}
+
