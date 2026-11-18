@@ -68,6 +68,23 @@ test('GET /api/restaurantes deve listar dois restaurantes', async () => {
   assert.ok(dados.some(r => r.slug === 'pizzaria-central'));
 });
 
+test('API pública não deve expor dados internos dos restaurantes', async () => {
+  const resposta = await fetch(`${baseURL}/api/restaurantes`);
+  const dados = await resposta.json();
+
+  assert.equal(resposta.status, 200);
+
+  for (const restaurante of dados) {
+    assert.deepEqual(
+      Object.keys(restaurante).sort(),
+      ['descricao', 'nome', 'slug']
+    );
+
+    assert.equal('ativo' in restaurante, false);
+    assert.equal('produtos' in restaurante, false);
+  }
+});
+
 test('Cardápio do Sabor da Casa deve retornar HTTP 200', async () => {
   const resposta = await fetch(
     `${baseURL}/restaurante/sabor-da-casa`

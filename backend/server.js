@@ -190,7 +190,6 @@ function gerarCardapio(restaurante) {
   </section>
 
   <script type="application/json" id="dados-produtos">${dadosProdutos}</script>
-
   <script>
     const produtos = JSON.parse(
       document.getElementById('dados-produtos').textContent
@@ -275,11 +274,19 @@ const server = http.createServer((req, res) => {
   }
 
   if (rota === '/api/restaurantes') {
+    const restaurantesPublicos = listarRestaurantes().map(
+      restaurante => ({
+        nome: restaurante.nome,
+        slug: restaurante.slug,
+        descricao: restaurante.descricao
+      })
+    );
+
     res.writeHead(200, {
       'Content-Type': 'application/json; charset=utf-8'
     });
 
-    return res.end(JSON.stringify(listarRestaurantes()));
+    return res.end(JSON.stringify(restaurantesPublicos));
   }
 
   const correspondencia = rota.match(
